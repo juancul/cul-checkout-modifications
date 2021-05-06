@@ -31,6 +31,19 @@ function cul_find_offer_product_in_cart() {
   
 }
 
+function is_juancul_admin() {
+    $current_user = wp_get_current_user();
+
+    if ($current_user->user_email == "juan+a@vivecul.com") {
+        return true;
+    }
+
+    else {
+      return false;
+    }
+    
+}
+
 /* Hide checkout fields for renewl payment*/
 
 add_filter('woocommerce_checkout_fields', 'custom_override_checkout_fields');
@@ -107,6 +120,13 @@ function custom_override_checkout_fields($fields) {
                         display:none;!important; 
                     }
                 </style>';
+    }
+    //don't close rentals for juan+a@vivecul.com
+    else if (is_juancul_admin() === true) {
+        $notice = '<div class="woocommerce-info">
+                    <strong><span class="cart-notice" style="color: #a374dd">Checkout solo para juan+a@vivecul.com.</span></strong>
+                </div>';
+        echo $notice;
     }
     else {
         //Close all rentals
