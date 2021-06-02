@@ -144,12 +144,12 @@ function custom_override_checkout_fields($fields) {
                 </style>';
     }
     //don't close rentals for juan+a@vivecul.com
-    /*else if (is_juancul_admin() === true) {
+    else if (is_juancul_admin() === true) {
         $notice = '<div class="woocommerce-info">
                     <strong><span class="cart-notice" style="color: #a374dd">Checkout solo para juan+a@vivecul.com.</span></strong>
                 </div>';
         echo $notice;
-    }*/
+    }
 
     /*else if (cul_find_marketplace_product_in_cart() === true) {
         $notice = '<div class="woocommerce-info">
