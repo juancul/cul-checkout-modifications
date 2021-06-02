@@ -1,5 +1,4 @@
 <?php
-
 /**
  * A plugin that adds collection information to the woocommerce subscription edit page
  *
@@ -16,16 +15,39 @@
 function cul_find_offer_product_in_cart() {
 
     $products = WC()->cart->cart_contents;
-    $cartTitles = '';
+    $cart_titles = '';
     foreach ($products as $product) {
-        $cartTitles .= $product['data']->get_title();
+        $cart_titles .= $product['data']->get_title();
     }
 
-    if (strpos($cartTitles, 'Oferta por alquiler') !== false) {
+    if (strpos($cart_titles, 'Oferta por alquiler') !== false) {
         return true;
     }
 
     else {
+      return false;
+    }
+  
+}
+
+function cul_find_marketplace_product_in_cart() {
+
+    $products = WC()->cart->cart_contents;
+    $category_titles = '';
+    foreach ($products as $product) {
+        $product_id = get_post_parent($product['data']->get_id())->ID;
+        
+        
+        $term_list = json_encode(wp_get_post_terms($product_id,'product_cat',array('fields'=>'slugs')));
+        $term_titles = "";
+        $term_titles .= $term_list;
+    }
+
+    if (strpos($term_titles , 'rayco') !== false) {
+        return true;
+    }
+
+    else {  
       return false;
     }
   
@@ -122,15 +144,23 @@ function custom_override_checkout_fields($fields) {
                 </style>';
     }
     //don't close rentals for juan+a@vivecul.com
-    else if (is_juancul_admin() === true) {
+    /*else if (is_juancul_admin() === true) {
         $notice = '<div class="woocommerce-info">
                     <strong><span class="cart-notice" style="color: #a374dd">Checkout solo para juan+a@vivecul.com.</span></strong>
                 </div>';
         echo $notice;
-    }
+    }*/
+
+    /*else if (cul_find_marketplace_product_in_cart() === true) {
+        $notice = '<div class="woocommerce-info">
+                    Este alquiler es procesado, facturado y entregado por Distribuidora Rayco
+                </div>';
+        echo $notice;
+    }*/
+
     else {
         //Close all rentals
-        echo ' <style>
+        /*echo ' <style>
                     .mwb_upsell_offer_parent_wrapper { 
                         display:none;!important; 
                     }
@@ -169,7 +199,7 @@ function custom_override_checkout_fields($fields) {
                 </style>
                 <div class="woocommerce-error">
                     <span class="cart-notice" style="color: #ffffff">En este momento no estamos recibiendo solicitudes nuevas de alquiler. ¡Vuelve pronto.!</span>
-                </div>';
+                </div>';*/
     }
     return $fields;
 }
