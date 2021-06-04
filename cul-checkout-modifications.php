@@ -160,7 +160,7 @@ function custom_override_checkout_fields($fields) {
 
     else {
         //Close all rentals
-        echo ' <style>
+        /*echo ' <style>
                     .mwb_upsell_offer_parent_wrapper { 
                         display:none;!important; 
                     }
@@ -199,7 +199,7 @@ function custom_override_checkout_fields($fields) {
                 </style>
                 <div class="woocommerce-error">
                     <span class="cart-notice" style="color: #ffffff">Dada la situación en el país, en este momento no estamos recibiendo solicitudes nuevas de alquiler. ¡Vuelve pronto.!</span>
-                </div>';
+                </div>';*/
     }
     return $fields;
 }
