@@ -159,7 +159,7 @@ function custom_override_checkout_fields($fields) {
     }*/
 
     else {
-        echo '<!-- Begin Inspectlet Asynchronous Code -->
+       /* echo '<!-- Begin Inspectlet Asynchronous Code -->
             <script type="text/javascript">
             (function() {
             window.__insp = window.__insp || [];
@@ -169,7 +169,7 @@ function custom_override_checkout_fields($fields) {
             setTimeout(ldinsp, 0);
             })();
             </script>
-            <!-- End Inspectlet Asynchronous Code -->';
+            <!-- End Inspectlet Asynchronous Code -->';*/
         //Close all rentals
         /*echo ' <style>
                     .mwb_upsell_offer_parent_wrapper { 
