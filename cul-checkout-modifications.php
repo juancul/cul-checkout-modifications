@@ -75,7 +75,7 @@ function custom_override_checkout_fields($fields) {
     $cart = $cart_data[array_key_first($cart_data)];
     if(isset($cart['subscription_renewal']) && isset($cart['subscription_renewal']['subscription_id'])) {
         //unset($fields['billing']);
-        echo '<script>
+        echo 'hola <script>
                 setTimeout(function(){ 
                     var address_1 = document.getElementById("billing_address_1").value.length;
                     var nhood = document.getElementById("billing_nhood").value.length;
