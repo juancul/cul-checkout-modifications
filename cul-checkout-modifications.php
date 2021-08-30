@@ -151,12 +151,10 @@ function custom_override_checkout_fields($fields) {
         echo $notice;
     }
 
-    /*else if (cul_find_marketplace_product_in_cart() === true) {
-        $notice = '<div class="woocommerce-info">
-                    Este alquiler es procesado, facturado y entregado por Distribuidora Rayco
-                </div>';
+    else if (cul_find_marketplace_product_in_cart() === true) {
+        $notice = '';
         echo $notice;
-    }*/
+    }
 
     else {
        /* echo '<!-- Begin Inspectlet Asynchronous Code -->
@@ -171,7 +169,7 @@ function custom_override_checkout_fields($fields) {
             </script>
             <!-- End Inspectlet Asynchronous Code -->';*/
         //Close all rentals
-        /*echo ' <style>
+        echo ' <style>
                     .mwb_upsell_offer_parent_wrapper { 
                         display:none;!important; 
                     }
@@ -210,7 +208,7 @@ function custom_override_checkout_fields($fields) {
                 </style>
                 <div class="woocommerce-error">
                     <span class="cart-notice" style="color: #ffffff">Dada la situación en el país, en este momento no estamos recibiendo solicitudes nuevas de alquiler. ¡Vuelve pronto.!</span>
-                </div>';*/
+                </div>';
     }
     return $fields;
 }
