@@ -107,6 +107,40 @@ function custom_override_checkout_fields($fields) {
                     }
                 </style>';
     }
+    else if(isset($cart['subscription_resubscribe']) && isset($cart['subscription_resubscribe']['subscription_id'])) {
+        //unset($fields['billing']);
+        echo '<script>
+                setTimeout(function(){ 
+                    var address_1 = document.getElementById("billing_address_1").value.length;
+                    var nhood = document.getElementById("billing_nhood").value.length;
+                    var phone = document.getElementById("billing_phone").value.length;
+                    var docid = document.getElementById("billing_docid").value.length;
+            
+                    if (address_1 != 0 && nhood != 0 && phone != 0 && docid != 0){
+                      
+                      document.getElementsByClassName("woocommerce-billing-fields__field-wrapper")[0].style.display = "none";              
+                    }
+                    }, 10);
+                </script>
+
+                <style> 
+                    /*.woocommerce-billing-fields__field-wrapper { 
+                        display:none;!important; 
+                    }*/
+                    .woocommerce-shipping-totals { 
+                        display:none;!important; 
+                    }
+                    .woocommerce-additional-fields { 
+                        display:none;!important; 
+                    }
+                    .woocommerce-billing-fields h3 { 
+                        display:none;!important; 
+                    }
+                    .cart-notice { 
+                        display:none;!important; 
+                    }
+                </style>';
+    }
     else if (cul_find_offer_product_in_cart() === true) {
         $notice = '<div class="woocommerce-info">
                     <strong><span class="cart-notice" style="color: #a374dd">Este es un pago para oferta.</span></strong>
