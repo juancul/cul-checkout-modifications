@@ -185,10 +185,10 @@ function custom_override_checkout_fields($fields) {
         echo $notice;
     }
 
-    /*else if (cul_find_marketplace_product_in_cart() === true) {
+    else if (cul_find_marketplace_product_in_cart() === true) {
         $notice = '';
         echo $notice;
-    }*/
+    }
 
     else {
        /* echo '<!-- Begin Inspectlet Asynchronous Code -->
